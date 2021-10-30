@@ -18,11 +18,10 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-
 @Entity
 @Table(name = "utente")
 public class Utente {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
@@ -39,22 +38,31 @@ public class Utente {
 	private Date dateCreated;
 	@Column(name = "creditoResiduo")
 	private Integer creditoResiduo;
-	
+
 	@Enumerated(EnumType.STRING)
 	private StatoUtente stato = StatoUtente.CREATO;
-	
+
 	@ManyToMany
 	@JoinTable(name = "utente_ruolo", joinColumns = @JoinColumn(name = "utente_id", referencedColumnName = "ID"), inverseJoinColumns = @JoinColumn(name = "ruolo_id", referencedColumnName = "ID"))
 	private Set<Ruolo> ruoli = new HashSet<>(0);
-	
+
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "utente")
 	private Set<Annuncio> annunci = new HashSet<Annuncio>(0);
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "utente")
 	private Set<Acquisto> acquisti = new HashSet<Acquisto>(0);
-	
+
 	public Utente() {
-		
+
+	}
+
+	public Utente(String username, String password, String nome, String cognome, Date dateCreated) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.nome = nome;
+		this.cognome = cognome;
+		this.dateCreated = dateCreated;
 	}
 
 	public Long getId() {
@@ -144,7 +152,7 @@ public class Utente {
 	public void setAcquisti(Set<Acquisto> acquisti) {
 		this.acquisti = acquisti;
 	}
-	
+
 	public boolean isAdmin() {
 		for (Ruolo ruoloItem : ruoli) {
 			if (ruoloItem.getCodice().equals(Ruolo.ROLE_ADMIN))
