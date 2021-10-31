@@ -30,7 +30,7 @@ public class LocalEntityManagerFactoryListener implements ServletContextListener
 
 	public void contextInitialized(ServletContextEvent sce) {
 		try {
-			entityManagerFactory = Persistence.createEntityManagerFactory("raccoltafilm_unit");
+			entityManagerFactory = Persistence.createEntityManagerFactory("myebay_unit");
 			// questa chiamata viene fatta qui per semplicità ma in genere è meglio trovare
 			// altri modi per fare init
 			initAdminUserAndRuoli();
@@ -70,28 +70,24 @@ public class LocalEntityManagerFactoryListener implements ServletContextListener
 			ruoloServiceInstance.inserisciNuovo(new Ruolo("Administrator", "ROLE_ADMIN"));
 		}
 
-		if (ruoloServiceInstance.cercaPerDescrizioneECodice("Visitor", "ROLE_VISITOR") == null) {
-			ruoloServiceInstance.inserisciNuovo(new Ruolo("Visitor", "ROLE_VISITOR"));
-		}
-
-		if (ruoloServiceInstance.cercaPerDescrizioneECodice("Classic User", "ROLE_CLASSIC_USER") == null) {
-			ruoloServiceInstance.inserisciNuovo(new Ruolo("Classic User", "ROLE_CLASSIC_USER"));
+		if (ruoloServiceInstance.cercaPerDescrizioneECodice("User", "CLASSIC_USER_ROLE") == null) {
+			ruoloServiceInstance.inserisciNuovo(new Ruolo("User", "CLASSIC_USER_ROLE"));
 		}
 
 		if (utenteServiceInstance.findByUsernameAndPassword("admin", "admin") == null) {
-			Utente admin = new Utente("admin", "admin", "Mario", "Rossi", new Date());
+			Utente admin = new Utente("admin", "admin", "Mario", "Rossi", new Date(), 100);
 			admin.setStato(StatoUtente.ATTIVO);
 			utenteServiceInstance.inserisciNuovo(admin);
 			utenteServiceInstance.aggiungiRuolo(admin,
 					ruoloServiceInstance.cercaPerDescrizioneECodice("Administrator", "ROLE_ADMIN"));
 		}
 
-		if (utenteServiceInstance.findByUsernameAndPassword("visitor", "123") == null) {
-			Utente admin = new Utente("visitor", "123", "Francesco", "Totti", new Date());
-			admin.setStato(StatoUtente.ATTIVO);
-			utenteServiceInstance.inserisciNuovo(admin);
-			utenteServiceInstance.aggiungiRuolo(admin,
-					ruoloServiceInstance.cercaPerDescrizioneECodice("Visitor", "ROLE_VISITOR"));
+		if (utenteServiceInstance.findByUsernameAndPassword("user", "user") == null) {
+			Utente user = new Utente("user", "user", "Francesco", "Totti", new Date(), 1000);
+			user.setStato(StatoUtente.ATTIVO);
+			utenteServiceInstance.inserisciNuovo(user);
+			utenteServiceInstance.aggiungiRuolo(user,
+					ruoloServiceInstance.cercaPerDescrizioneECodice("user", "CLASSIC_USER_ROLE"));
 		}
 	}
 

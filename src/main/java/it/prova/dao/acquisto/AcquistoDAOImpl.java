@@ -24,20 +24,27 @@ public class AcquistoDAOImpl implements AcquistoDAO {
 
 	@Override
 	public void update(Acquisto input) throws Exception {
-		// TODO Auto-generated method stub
-		
+		if (input == null) {
+			throw new Exception("Problema valore in input");
+		}
+		input = entityManager.merge(input);
 	}
 
 	@Override
 	public void insert(Acquisto input) throws Exception {
-		// TODO Auto-generated method stub
-		
+		if (input == null) {
+			throw new Exception("Problema valore in input");
+		}
+
+		entityManager.persist(input);
 	}
 
 	@Override
 	public void delete(Acquisto input) throws Exception {
-		// TODO Auto-generated method stub
-		
+		if (input == null) {
+			throw new Exception("Problema valore in input");
+		}
+		entityManager.remove(entityManager.merge(input));
 	}
 
 	@Override

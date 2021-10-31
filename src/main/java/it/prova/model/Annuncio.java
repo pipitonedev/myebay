@@ -36,7 +36,7 @@ public class Annuncio {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "utente_id", nullable = false)
-	private Utente utenteIserimento;
+	private Utente utenteInserimento;
 
 	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, fetch = FetchType.LAZY)
 	@JoinTable(name = "annuncio_categoria", joinColumns = @JoinColumn(name = "annuncio_id", referencedColumnName = "ID"), inverseJoinColumns = @JoinColumn(name = "categoria_id", referencedColumnName = "ID"))
@@ -94,12 +94,12 @@ public class Annuncio {
 		this.aperto = aperto;
 	}
 
-	public Utente getUtenteIserimento() {
-		return utenteIserimento;
+	public Utente getUtenteInserimento() {
+		return utenteInserimento;
 	}
 
 	public void setUtenteIserimento(Utente utenteIserimento) {
-		this.utenteIserimento = utenteIserimento;
+		this.utenteInserimento = utenteIserimento;
 	}
 
 	public Set<Categoria> getCategorie() {

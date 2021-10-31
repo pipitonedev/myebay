@@ -17,7 +17,7 @@ public interface CategoriaService {
 
 	public void rimuovi(Categoria categoriaInstance) throws Exception;
 	
-	public List<Categoria> findByExample(Categoria example) throws Exception;
+	public Categoria cercaPerDescrizioneECodice(String descrizione, String codice) throws Exception;
 	
 	//per injection
 	public void setCategoriaDAO(CategoriaDAO categoriaDAO);

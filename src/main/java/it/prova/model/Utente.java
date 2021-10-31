@@ -46,10 +46,10 @@ public class Utente {
 	@JoinTable(name = "utente_ruolo", joinColumns = @JoinColumn(name = "utente_id", referencedColumnName = "ID"), inverseJoinColumns = @JoinColumn(name = "ruolo_id", referencedColumnName = "ID"))
 	private Set<Ruolo> ruoli = new HashSet<>(0);
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "utente")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "utenteInserimento")
 	private Set<Annuncio> annunci = new HashSet<Annuncio>(0);
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "utente")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "utenteAcquirente")
 	private Set<Acquisto> acquisti = new HashSet<Acquisto>(0);
 
 	public Utente() {
@@ -63,6 +63,22 @@ public class Utente {
 		this.nome = nome;
 		this.cognome = cognome;
 		this.dateCreated = dateCreated;
+	}
+
+	public Utente(String username, String password, String nome, String cognome, Date dateCreated,
+			Integer creditoResiduo) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.nome = nome;
+		this.cognome = cognome;
+		this.dateCreated = dateCreated;
+		this.creditoResiduo = creditoResiduo;
+	}
+
+	public Utente(Long id) {
+		super();
+		this.id = id;
 	}
 
 	public Long getId() {
