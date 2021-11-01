@@ -19,10 +19,14 @@
             <a class="nav-link dropdown-toggle" href="#" id="dropdown07" data-bs-toggle="dropdown" aria-expanded="false">Menu'</a>
             <ul class="dropdown-menu" aria-labelledby="dropdown07">
               <li><a class="dropdown-item" href="${pageContext.request.contextPath}/index.jsp">Home</a></li>
-              <li><a class="dropdown-item" href="${pageContext.request.contextPath}/PrepareSearchRegistaServlet">Ricerca Registi</a></li>
-              <li><a class="dropdown-item" href="${pageContext.request.contextPath}/PrepareInsertRegistaServlet">Inserisci Regista</a></li>
-              <li><a class="dropdown-item" href="${pageContext.request.contextPath}/PrepareSearchFilmServlet">Ricerca Film</a></li>
-              <li><a class="dropdown-item" href="${pageContext.request.contextPath}/PrepareInsertFilmServlet">Inserisci Film</a></li>
+              <li><a class="dropdown-item" href="${pageContext.request.contextPath}/PrepareSearchAnnuncioServlet">Ricerca Annunci</a></li>
+        		
+        		<c:if test="${userInfo.isAdmin()}">
+              	<li><a class="dropdown-item" href="${pageContext.request.contextPath}/admin/PrepareSearchUtenteServlet">Ricerca Utenti</a></li>
+              	<li><a class="dropdown-item" href="${pageContext.request.contextPath}/admin/ExecuteListUtenteServlet">Gestione Utenti</a></li>
+              </c:if>
+              
+              
               
             </ul> 
           </li>

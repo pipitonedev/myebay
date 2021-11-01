@@ -94,7 +94,7 @@
 			          <svg class="bi" width="1em" height="1em"><use xlink:href="#collection"/></svg>
 			        </div>
 			        <h2>Gestione Annunci</h2>
-			        <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
+			        <p>Inserisci, Aggiorna o elimina i tuoi annunci</p>
 			        <a href="${pageContext.request.contextPath}/user/PrepareSearchAnnuncioUtenteServlet" class="icon-link">
 			          Vai alla funzionalità
 			          <svg class="bi" width="1em" height="1em"><use xlink:href="#chevron-right"/></svg>
@@ -105,7 +105,7 @@
 			          <svg class="bi" width="1em" height="1em"><use xlink:href="#people-circle"/></svg>
 			        </div>
 			        <h2>Visualizzazione Acquisti Effettuati</h2>
-			        <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
+			        <p>Ecco un riepilogo dei tuoi acquisti!</p>
 			        <a href="${pageContext.request.contextPath}/user/PrepareSearchAcquistoServlet" class="icon-link">
 			          Vai alla funzionalità
 			          <svg class="bi" width="1em" height="1em"><use xlink:href=""/></svg>
@@ -117,7 +117,7 @@
 			          <svg class="bi" width="1em" height="1em"><use xlink:href="#toggles2"/></svg>
 			        </div>
 			        <h2>Gestione Utenze</h2>
-			        <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
+			        <p>Gestisci gli utenti del tuo portale attraverso questa funzionalità!</p>
 			        <a href="${pageContext.request.contextPath}/admin/PrepareSearchUtenteServlet" class="icon-link">
 			          Vai alla funzionalità
 			          <svg class="bi" width="1em" height="1em"><use xlink:href="#chevron-right"/></svg>
