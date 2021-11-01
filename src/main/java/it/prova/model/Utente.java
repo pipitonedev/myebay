@@ -177,4 +177,11 @@ public class Utente {
 		return false;
 	}
 
+	public boolean isLogged() {
+		if (this.id == null)
+			return false;
+
+		return true;
+	}
+
 }

@@ -22,7 +22,7 @@ public class ExecuteSearchAnnuncioServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String testoAnnuncioParam = request.getParameter("testoAnnuncio");
 		String prezzoParam = request.getParameter("prezzo");
-		String[] categoriaInputParam = request.getParameterValues("categoria");
+		String[] categoriaInputParam = request.getParameterValues("categorieInput");
 
 		try {
 			

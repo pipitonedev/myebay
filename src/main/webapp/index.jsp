@@ -9,7 +9,7 @@
 		<!-- Custom styles per le features di bootstrap 'Columns with icons' -->
 	   <link href="./assets/css/features.css" rel="stylesheet">
 	   
-	   <title>Welcome to My Ebay</title>
+	   <title>My Ebay</title>
 	 </head>
 	   <body class="d-flex flex-column h-100">
 	   		
