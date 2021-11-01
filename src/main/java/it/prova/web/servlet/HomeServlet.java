@@ -29,7 +29,7 @@ public class HomeServlet extends HttpServlet {
 			throws ServletException, IOException {
 		try {
 			request.setAttribute("categoria_list_attribute",
-					MyServiceFactory.getCategoriaServiceInstance().listAllElements());
+					MyServiceFactory.getCategoriaServiceInstance().listAll());
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -44,7 +44,7 @@ public class HomeServlet extends HttpServlet {
 			throws ServletException, IOException {
 		try {
 			request.setAttribute("categoria_list_attribute",
-					MyServiceFactory.getCategoriaServiceInstance().listAllElements());
+					MyServiceFactory.getCategoriaServiceInstance().listAll());
 
 		} catch (Exception e) {
 			e.printStackTrace();

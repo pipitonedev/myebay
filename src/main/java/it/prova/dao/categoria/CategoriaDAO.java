@@ -1,10 +1,11 @@
 package it.prova.dao.categoria;
 
+
 import it.prova.dao.IBaseDAO;
-import it.prova.model.Categoria;
+import it.prova.model.Categoria; 
 
-public interface CategoriaDAO extends IBaseDAO<Categoria> {
+
+public interface CategoriaDAO extends IBaseDAO<Categoria>{
+	public Categoria findByDescrizione(String descrizioneInput) throws Exception;
 	
-	public Categoria findByDescrizioneAndCodice(String descrizione, String codice) throws Exception;
-
 }

@@ -36,25 +36,26 @@ public class UtilityForm {
 		}
 		return true;
 	}
-	
-	public static Annuncio createAnnuncioFromParams(String testoAnnuncioParam, String prezzoParamInput) {
 
+	public static Annuncio createAnnuncioFromParams(String testoAnnuncioInputParam, String prezzoInputParam) {
 		Date dataCreatedParam = new Date();
-		Annuncio result = new Annuncio(testoAnnuncioParam, dataCreatedParam);
 
-		if (NumberUtils.isCreatable(prezzoParamInput)) {
-			result.setPrezzo(Integer.parseInt(prezzoParamInput));
+		Annuncio result = new Annuncio(testoAnnuncioInputParam, dataCreatedParam);
+
+		if (NumberUtils.isCreatable(prezzoInputParam)) {
+			result.setPrezzo(Integer.parseInt(prezzoInputParam));
 		}
+
 		result.setAperto(true);
 
 		return result;
+
 	}
 
-
-	public static boolean validateUtenteBean(Utente utenteToBeValidated) {
-		if (StringUtils.isBlank(utenteToBeValidated.getUsername()) || StringUtils.isBlank(utenteToBeValidated.getNome())
-				|| StringUtils.isBlank(utenteToBeValidated.getCognome())
-				|| StringUtils.isBlank(utenteToBeValidated.getPassword()) || utenteToBeValidated.getRuoli() == null) {
+	public static boolean validateAnnuncioBean(Annuncio annuncioToBeValidated) {
+		// prima controlliamo che non siano vuoti i parametri
+		if (StringUtils.isBlank(annuncioToBeValidated.getTestoAnnuncio()) || annuncioToBeValidated.getPrezzo() == null
+				|| annuncioToBeValidated.getPrezzo() < 1 || annuncioToBeValidated.getDataAnnuncio() == null) {
 			return false;
 		}
 		return true;

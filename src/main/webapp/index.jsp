@@ -70,15 +70,11 @@
 								</div>
 								
 							
-								<c:forEach
-										items="${MyServiceFactory.getCategoriaServiceInstance().listAllElements()}"
-										var="categoriaItem">
-										<div class="col-md-3">
-											<input type="checkbox" name="categorieInput"
-												value="${categoriaItem.id}">
-											${categoriaItem.descrizione}
-										</div>
+								<div class="col-md-6">
+								<c:forEach items="${categorie_list_attribute}" var="categoriaItem">
+										<input type="checkbox" name="categoria" value="${categoriaItem.id}">${categoriaItem.descrizione}<br>
 									</c:forEach>
+								</div>
 								
 								
 							<div class="col-12">
@@ -89,6 +85,43 @@
 				      </div>
 			    </div>
 			    
+			  </div>
+			   <div class="container px-4 py-5" id="featured-3">
+			    <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+			      <div class="feature col">
+			        <div class="feature-icon bg-primary bg-gradient">
+			          <svg class="bi" width="1em" height="1em"><use xlink:href="#collection"/></svg>
+			        </div>
+			        <h2>Ricerca Registi</h2>
+			        <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
+			        <a href="PrepareSearchRegistaServlet" class="icon-link">
+			          Vai alla funzionalità
+			          <svg class="bi" width="1em" height="1em"><use xlink:href="#chevron-right"/></svg>
+			        </a>
+			      </div>
+			      <div class="feature col">
+			        <div class="feature-icon bg-primary bg-gradient">
+			          <svg class="bi" width="1em" height="1em"><use xlink:href="#people-circle"/></svg>
+			        </div>
+			        <h2>Inserisci Annuncio</h2>
+			        <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
+			        <a href="${pageContext.request.contextPath}/user/PrepareInsertAnnuncioServlet" class="icon-link">
+			          Vai alla funzionalità
+			          <svg class="bi" width="1em" height="1em"><use xlink:href="#chevron-right"/></svg>
+			        </a>
+			      </div>
+			      <div class="feature col">
+			        <div class="feature-icon bg-primary bg-gradient">
+			          <svg class="bi" width="1em" height="1em"><use xlink:href="#toggles2"/></svg>
+			        </div>
+			        <h2>Ricerca Film</h2>
+			        <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
+			        <a href="PrepareSearchFilmServlet" class="icon-link">
+			          Vai alla funzionalità
+			          <svg class="bi" width="1em" height="1em"><use xlink:href="#chevron-right"/></svg>
+			        </a>
+			      </div>
+			    </div>
 			  </div>
 		
 			</main>

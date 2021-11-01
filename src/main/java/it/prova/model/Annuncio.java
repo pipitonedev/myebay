@@ -46,12 +46,58 @@ public class Annuncio {
 
 	}
 
-	public Annuncio(String testoAnnuncio, Integer prezzo, Date dataAnnuncio, boolean aperto) {
+	public Annuncio(String testoAnnuncio, int prezzo, Date dataAnnuncio, boolean aperto) {
 		super();
 		this.testoAnnuncio = testoAnnuncio;
 		this.prezzo = prezzo;
 		this.dataAnnuncio = dataAnnuncio;
 		this.aperto = aperto;
+	}
+
+	public Annuncio(String testoAnnuncio, int prezzo, Date dataAnnuncio, Utente utenteInserimento) {
+		super();
+		this.testoAnnuncio = testoAnnuncio;
+		this.prezzo = prezzo;
+		this.dataAnnuncio = dataAnnuncio;
+		this.utenteInserimento = utenteInserimento;
+	}
+
+	public Annuncio(String testoAnnuncio, int prezzo, Date dataAnnuncio) {
+		super();
+		this.testoAnnuncio = testoAnnuncio;
+		this.prezzo = prezzo;
+		this.dataAnnuncio = dataAnnuncio;
+	}
+
+	public Annuncio(String testoAnnuncio, int prezzo, Date dataAnnuncio, boolean aperto, Utente utenteInserimento) {
+		super();
+		this.testoAnnuncio = testoAnnuncio;
+		this.prezzo = prezzo;
+		this.dataAnnuncio = dataAnnuncio;
+		this.aperto = aperto;
+		this.utenteInserimento = utenteInserimento;
+	}
+
+	public Annuncio(String testoAnnuncio, int prezzo, Date dataAnnuncio, boolean aperto, Utente utenteInserimento,
+			Set<Categoria> categorie) {
+		super();
+		this.testoAnnuncio = testoAnnuncio;
+		this.prezzo = prezzo;
+		this.dataAnnuncio = dataAnnuncio;
+		this.aperto = aperto;
+		this.utenteInserimento = utenteInserimento;
+		this.categorie = categorie;
+	}
+
+	public Annuncio(String testoAnnuncio, Integer prezzo) {
+		super();
+		this.testoAnnuncio = testoAnnuncio;
+		this.prezzo = prezzo;
+	}
+
+	public Annuncio(String testoAnnuncio) {
+		super();
+		this.testoAnnuncio = testoAnnuncio;
 	}
 
 	public Annuncio(String testoAnnuncio, Date dataAnnuncio) {
@@ -104,8 +150,8 @@ public class Annuncio {
 		return utenteInserimento;
 	}
 
-	public void setUtenteIserimento(Utente utenteIserimento) {
-		this.utenteInserimento = utenteIserimento;
+	public void setUtenteInserimento(Utente utenteInserimento) {
+		this.utenteInserimento = utenteInserimento;
 	}
 
 	public Set<Categoria> getCategorie() {
