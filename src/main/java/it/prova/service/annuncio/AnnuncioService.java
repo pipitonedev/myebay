@@ -30,6 +30,8 @@ public interface AnnuncioService {
 	
 	public List<Annuncio> findByUtente(Utente example) throws Exception;
 	
+	public void rimuovi(Long idAnnuncioToRemove) throws Exception;
+	
 	
 	// per injection
 	public void setAnnuncioDAO(AnnuncioDAO annuncioDAO);

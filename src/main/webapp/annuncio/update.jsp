@@ -56,6 +56,9 @@
 								
 							<div class="col-12">
 								<button type="submit" name="submit" value="submit" id="submit" class="btn btn-primary">Conferma</button>
+								 <a href="ExecuteListAnnuncioUtenteServlet" class='btn btn-outline-secondary' style='width:80px'>
+					            <i class='fa fa-chevron-left'></i> Back
+					        </a>
 							</div>
 		
 						</form>
@@ -65,6 +68,7 @@
 					<!-- end card-body -->			   
 				    </div>
 				<!-- end card -->
+				
 				</div>		
 					  
 			    

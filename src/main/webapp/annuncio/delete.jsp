@@ -7,7 +7,7 @@
 	 	<!-- Common imports in pages -->
 	 	<jsp:include page="../header.jsp" />
 	 	
-	   <title>Visualizza Elemento</title>
+	   <title>Elimina Annuncio</title>
 	   
 	 </head>
 	   <body class="d-flex flex-column h-100">
@@ -22,7 +22,7 @@
 			  
 			  		<div class='card'>
 					    <div class='card-header'>
-					        <h5>Visualizza dettaglio</h5>
+					        <h5>Sei sicuro di voler eliminare il seguente annuncio?</h5>
 					    </div>
 					    
 					
@@ -48,7 +48,7 @@
 					    	</dl>
 					    	
 							<dl class="row">
-								<dt class="col-sm-3 text-right">Categoria/e:</dt>
+								<dt class="col-sm-3 text-right">Categorie:</dt>
 								<c:forEach items="${show_annuncio_attr.categorie}" var="categoriaItem">
 									 <dd class="col-sm-9">${categoriaItem.descrizione}</dd>
 								</c:forEach>
@@ -59,9 +59,13 @@
 					    <!-- end card body -->
 					    
 					    <div class='card-footer'>
-					        <a href="ExecuteListAnnuncioUtenteServlet" class='btn btn-outline-secondary' style='width:80px'>
-					            <i class='fa fa-chevron-left'></i> Back
-					        </a>
+					    	<form action="${pageContext.request.contextPath}/user/ExecuteDeleteAnnuncioServlet" method="post">
+					    		<input type="hidden" name="idAnnuncio" value="${show_annuncio_attr.id}">
+						    	<button type="submit" name="submit" id="submit" class="btn btn-danger">Conferma</button>
+						        <a href="${pageContext.request.contextPath}/user/ExecuteListAnnuncioUtenteServlet" class='btn btn-outline-secondary' style='width:80px'>
+						            <i class='fa fa-chevron-left'></i> Back
+						        </a>
+					        </form>
 					    </div>
 					<!-- end card -->
 					</div>	

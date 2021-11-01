@@ -9,11 +9,12 @@ import it.prova.dao.acquisto.AcquistoDAO;
 import it.prova.dao.annuncio.AnnuncioDAO;
 import it.prova.dao.categoria.CategoriaDAO;
 import it.prova.dao.utente.UtenteDAO;
+import it.prova.exceptions.ElementNotFoundException;
 import it.prova.model.Annuncio;
 import it.prova.model.Utente;
 import it.prova.web.listener.LocalEntityManagerFactoryListener;
 
-public  class AnnuncioServiceImpl implements AnnuncioService {
+public class AnnuncioServiceImpl implements AnnuncioService {
 	private AnnuncioDAO annuncioDAO;
 	private CategoriaDAO categoriaDAO;
 	private AcquistoDAO acquistoDAO;
@@ -252,13 +253,36 @@ public  class AnnuncioServiceImpl implements AnnuncioService {
 	@Override
 	public void setUtenteDAO(UtenteDAO utenteDAO) {
 		this.utenteDAO = utenteDAO;
-		
+
 	}
 
 	@Override
 	public void setAcquistoDAO(AcquistoDAO acquistoDAO) {
 		this.acquistoDAO = acquistoDAO;
-		
+
 	}
 
+	@Override
+	public void rimuovi(Long idAnnuncioToRemove) throws Exception {
+		EntityManager entityManager = LocalEntityManagerFactoryListener.getEntityManager();
+
+		try {
+			entityManager.getTransaction().begin();
+
+			annuncioDAO.setEntityManager(entityManager);
+			Annuncio annuncioToRemove = annuncioDAO.findOne(idAnnuncioToRemove).orElse(null);
+			if (annuncioToRemove == null)
+				throw new ElementNotFoundException("Annuncio con id: " + idAnnuncioToRemove + " non trovato.");
+
+			annuncioDAO.delete(annuncioToRemove);
+			entityManager.getTransaction().commit();
+		} catch (Exception e) {
+			entityManager.getTransaction().rollback();
+			e.printStackTrace();
+			throw e;
+		} finally {
+			LocalEntityManagerFactoryListener.closeEntityManager(entityManager);
+		}
+
+	}
 }
