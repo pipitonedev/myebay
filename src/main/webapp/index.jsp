@@ -86,15 +86,16 @@
 			    </div>
 			    
 			  </div>
-			   <div class="container px-4 py-5" id="featured-3">
+			   <c:if test="${userInfo.isLogged()}">
+			  <div class="container px-4 py-5" id="featured-3">
 			    <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
 			      <div class="feature col">
 			        <div class="feature-icon bg-primary bg-gradient">
 			          <svg class="bi" width="1em" height="1em"><use xlink:href="#collection"/></svg>
 			        </div>
-			        <h2>Ricerca Registi</h2>
+			        <h2>Gestione Annunci</h2>
 			        <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
-			        <a href="PrepareSearchRegistaServlet" class="icon-link">
+			        <a href="${pageContext.request.contextPath}/user/PrepareSearchAnnuncioUtenteServlet" class="icon-link">
 			          Vai alla funzionalità
 			          <svg class="bi" width="1em" height="1em"><use xlink:href="#chevron-right"/></svg>
 			        </a>
@@ -103,26 +104,29 @@
 			        <div class="feature-icon bg-primary bg-gradient">
 			          <svg class="bi" width="1em" height="1em"><use xlink:href="#people-circle"/></svg>
 			        </div>
-			        <h2>Inserisci Annuncio</h2>
+			        <h2>Visualizzazione Acquisti Effettuati</h2>
 			        <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
-			        <a href="${pageContext.request.contextPath}/user/PrepareInsertAnnuncioServlet" class="icon-link">
+			        <a href="${pageContext.request.contextPath}/user/PrepareSearchAcquistoServlet" class="icon-link">
 			          Vai alla funzionalità
-			          <svg class="bi" width="1em" height="1em"><use xlink:href="#chevron-right"/></svg>
+			          <svg class="bi" width="1em" height="1em"><use xlink:href=""/></svg>
 			        </a>
 			      </div>
+			      <c:if test="${userInfo.isAdmin()}">
 			      <div class="feature col">
 			        <div class="feature-icon bg-primary bg-gradient">
 			          <svg class="bi" width="1em" height="1em"><use xlink:href="#toggles2"/></svg>
 			        </div>
-			        <h2>Ricerca Film</h2>
+			        <h2>Gestione Utenze</h2>
 			        <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
-			        <a href="PrepareSearchFilmServlet" class="icon-link">
+			        <a href="${pageContext.request.contextPath}/admin/PrepareSearchUtenteServlet" class="icon-link">
 			          Vai alla funzionalità
 			          <svg class="bi" width="1em" height="1em"><use xlink:href="#chevron-right"/></svg>
 			        </a>
 			      </div>
+			      </c:if>
 			    </div>
 			  </div>
+			   </c:if>
 		
 			</main>
 			
