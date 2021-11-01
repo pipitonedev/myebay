@@ -8,6 +8,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 
 import it.prova.model.Acquisto;
+import it.prova.model.Annuncio;
 import it.prova.model.Utente;
 
 public class UtilityForm {
@@ -35,6 +36,20 @@ public class UtilityForm {
 		}
 		return true;
 	}
+	
+	public static Annuncio createAnnuncioFromParams(String testoAnnuncioParam, String prezzoParamInput) {
+
+		Date dataCreatedParam = new Date();
+		Annuncio result = new Annuncio(testoAnnuncioParam, dataCreatedParam);
+
+		if (NumberUtils.isCreatable(prezzoParamInput)) {
+			result.setPrezzo(Integer.parseInt(prezzoParamInput));
+		}
+		result.setAperto(true);
+
+		return result;
+	}
+
 
 	public static boolean validateUtenteBean(Utente utenteToBeValidated) {
 		if (StringUtils.isBlank(utenteToBeValidated.getUsername()) || StringUtils.isBlank(utenteToBeValidated.getNome())

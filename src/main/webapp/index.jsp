@@ -53,30 +53,36 @@
 			     <div class="p-5 mb-4 bg-light rounded-3">
 				      <div class="container-fluid py-5">
 				        <h1 class="display-5 fw-bold">
-						 Benvenuto su My Ebay</h1>
+						My Ebay</h1>
 				        <p class="col-md-8 fs-4">Usa il form qui sotto per cercare tra i vari
 				        annunci presenti sul nostro portale.</p>
-				         <form method="post" action="ExecuteSearchRegistaServlet" class="row g-3" >
+				        
+				         <form method="post" action="ExecuteSearchAnnuncioServlet" class="row g-3" >
 							
 							
 								<div class="col-md-6">
-									<input type="text" name="testoAnnuncio" id="testoAnnuncio" class="form-control" placeholder="Cerca annuncio...." value="${search_annuncio_attr.testoAnnuncio }" >
+									<input type="text" name="testoAnnuncio" id="testoAnnuncio" class="form-control" placeholder="Cerca annuncio....">
 								</div>
 								
 								
 								<div class="col-md-6">
-									<input type="number" class="form-control" name="prezzo" id="prezzo" placeholder="Inserire il prezzo da cui partire.." value="${insert_film_attr.minutiDurata }">
+									<input type="number" class="form-control" name="prezzo" id="prezzo" placeholder="Inserire il prezzo da cui partire.." value="0">
 								</div>
 								
-								<div class="col-md-6">
-								<c:forEach items="${categoria_list_attribute}" var="categoriaItem">
-										<input type="checkbox" name="categoria" value="${categoriaItem.id}">${categoriaItem.descrizione}<br>
+							
+								<c:forEach
+										items="${MyServiceFactory.getCategoriaServiceInstance().listAllElements()}"
+										var="categoriaItem">
+										<div class="col-md-3">
+											<input type="checkbox" name="categorieInput"
+												value="${categoriaItem.id}">
+											${categoriaItem.descrizione}
+										</div>
 									</c:forEach>
-								</div>
 								
 								
 							<div class="col-12">
-								<a class="btn btn-success btn-lg" href="PrepareSearchServlet">Cerca</a>
+								<button type="submit" name="submit" value="submit" id="submit" class="btn btn-success">Conferma</button>
 							</div>
 		
 						</form>

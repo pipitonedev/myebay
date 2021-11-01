@@ -54,6 +54,12 @@ public class Annuncio {
 		this.aperto = aperto;
 	}
 
+	public Annuncio(String testoAnnuncio, Date dataAnnuncio) {
+		super();
+		this.testoAnnuncio = testoAnnuncio;
+		this.dataAnnuncio = dataAnnuncio;
+	}
+
 	public Long getId() {
 		return id;
 	}
