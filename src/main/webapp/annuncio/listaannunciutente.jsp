@@ -42,7 +42,7 @@
 				    </div>
 				    <div class='card-body'>
 				    	
-				    	<a class="btn btn-primary " href="${pageContext.request.contextPath}/user/PrepareInsertAnnuncioServlet">Inserisci Annuncio</a>
+				    	<a class="btn btn-success " href="${pageContext.request.contextPath}/user/PrepareInsertAnnuncioServlet">Inserisci Annuncio</a>
 				        <div class='table-responsive'>
 				            <table class='table table-striped ' >
 				                <thead>
@@ -61,8 +61,8 @@
 											<td><fmt:formatDate type = "date" value = "${annuncioItem.dataAnnuncio }" /></td>
 											<td>
 												<a class="btn  btn-sm btn-outline-secondary ml-2 mr-2" href="${pageContext.request.contextPath}/user/ExecuteVisualizzaAnnuncioServlet?idAnnuncio=${annuncioItem.id }">Visualizza</a>
-												<a class="btn  btn-sm btn-outline-primary ml-2 mr-2" href="${pageContext.request.contextPath}/user/PrepareUpdateUtenteServlet?idAnnuncio=${annuncioItem.id }">Edit</a>
-												<a class="btn btn-outline-danger btn-sm" href="${pageContext.request.contextPath}/user/PrepareUpdateUtenteServlet?idAnnuncio=${annuncioItem.id }">Delete</a>
+												<a class="btn  btn-sm btn-outline-primary ml-2 mr-2" href="${pageContext.request.contextPath}/user/PrepareUpdateAnnuncioServlet?idAnnuncio=${annuncioItem.id }">Edit</a>
+												<a class="btn btn-outline-danger btn-sm" href="${pageContext.request.contextPath}/user/PrepareDeleteAnnuncioServlet?idAnnuncio=${annuncioItem.id }">Delete</a>
 											</td>
 										</tr>
 									</c:forEach>

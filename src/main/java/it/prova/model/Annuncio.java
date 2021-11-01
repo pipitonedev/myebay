@@ -105,6 +105,15 @@ public class Annuncio {
 		this.testoAnnuncio = testoAnnuncio;
 		this.dataAnnuncio = dataAnnuncio;
 	}
+	
+	
+
+	public Annuncio(Long id, String testoAnnuncio, Integer prezzo) {
+		super();
+		this.id = id;
+		this.testoAnnuncio = testoAnnuncio;
+		this.prezzo = prezzo;
+	}
 
 	public Long getId() {
 		return id;
