@@ -35,17 +35,17 @@ public class Acquisto {
 
 	}
 
-	public Acquisto(String descrizione, Date dataAcquisto, Integer prezzo) {
+	public Acquisto(String descrizione, int prezzo, Date dataAcquisto, Utente utenteAcquirente) {
 		super();
 		this.descrizione = descrizione;
-		this.dataAcquisto = dataAcquisto;
 		this.prezzo = prezzo;
+		this.dataAcquisto = dataAcquisto;
+		this.utenteAcquirente = utenteAcquirente;
 	}
 
-	public Acquisto(String descrizione, Integer prezzo) {
+	public Acquisto(Utente utenteAcquirente) {
 		super();
-		this.descrizione = descrizione;
-		this.prezzo = prezzo;
+		this.utenteAcquirente = utenteAcquirente;
 	}
 
 	public Acquisto(String descrizione) {
@@ -53,12 +53,11 @@ public class Acquisto {
 		this.descrizione = descrizione;
 	}
 
-	public Acquisto(String descrizione, Date dataAcquisto, Integer prezzo, Utente utenteAcquirente) {
+	public Acquisto(String descrizione, int prezzo, Date dataAcquisto) {
 		super();
 		this.descrizione = descrizione;
-		this.dataAcquisto = dataAcquisto;
 		this.prezzo = prezzo;
-		this.utenteAcquirente = utenteAcquirente;
+		this.dataAcquisto = dataAcquisto;
 	}
 
 	public Long getId() {

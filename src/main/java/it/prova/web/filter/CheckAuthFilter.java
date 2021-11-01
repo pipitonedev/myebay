@@ -19,7 +19,7 @@ public class CheckAuthFilter implements Filter {
 
 	private static final String HOME_PATH = "";
 	private static final String[] EXCLUDED_URLS = { "/login.jsp", "/LoginServlet", "/LogoutServlet", "/assets/",
-			"/index.jsp" };
+			"/index.jsp", "/ExecuteSearchAnnuncioServlet", "/PreparaAcquistaServlet" };
 	private static final String[] PROTECTED_URLS = { "/admin/" };
 
 	public CheckAuthFilter() {

@@ -9,7 +9,9 @@ import it.prova.dao.acquisto.AcquistoDAO;
 import it.prova.dao.annuncio.AnnuncioDAO;
 import it.prova.dao.categoria.CategoriaDAO;
 import it.prova.dao.utente.UtenteDAO;
+import it.prova.exceptions.CreditoInsufficiente;
 import it.prova.exceptions.ElementNotFoundException;
+import it.prova.model.Acquisto;
 import it.prova.model.Annuncio;
 import it.prova.model.Utente;
 import it.prova.web.listener.LocalEntityManagerFactoryListener;
@@ -275,6 +277,48 @@ public class AnnuncioServiceImpl implements AnnuncioService {
 				throw new ElementNotFoundException("Annuncio con id: " + idAnnuncioToRemove + " non trovato.");
 
 			annuncioDAO.delete(annuncioToRemove);
+			entityManager.getTransaction().commit();
+		} catch (Exception e) {
+			entityManager.getTransaction().rollback();
+			e.printStackTrace();
+			throw e;
+		} finally {
+			LocalEntityManagerFactoryListener.closeEntityManager(entityManager);
+		}
+
+	}
+
+	@Override
+	public void acquista(String id, Utente utenteInstance) throws Exception {
+		EntityManager entityManager = LocalEntityManagerFactoryListener.getEntityManager();
+
+		try {
+			entityManager.getTransaction().begin();
+			annuncioDAO.setEntityManager(entityManager);
+			acquistoDAO.setEntityManager(entityManager);
+			utenteDAO.setEntityManager(entityManager);
+
+			Annuncio annuncioDaAcquistare = annuncioDAO.findOne(Long.parseLong(id)).orElse(null);
+
+			if (annuncioDaAcquistare == null)
+				throw new ElementNotFoundException("Annuncio con id: " + id + " non trovato.");
+
+			if (utenteInstance.getCreditoResiduo() < annuncioDaAcquistare.getPrezzo())
+				throw new CreditoInsufficiente("Credito Residuo Insufficiente per effettuare l'acquisto");
+
+			int sottrazioneCredito = utenteInstance.getCreditoResiduo() - annuncioDaAcquistare.getPrezzo();
+
+			utenteInstance.setCreditoResiduo(sottrazioneCredito);
+
+			utenteDAO.update(utenteInstance);
+
+			annuncioDaAcquistare.setAperto(false);
+
+			Acquisto acquistoDaCreare = new Acquisto(annuncioDaAcquistare.getTestoAnnuncio(),
+					annuncioDaAcquistare.getPrezzo(), new Date(), utenteInstance);
+
+			acquistoDAO.insert(acquistoDaCreare);
+
 			entityManager.getTransaction().commit();
 		} catch (Exception e) {
 			entityManager.getTransaction().rollback();

@@ -32,6 +32,8 @@ public interface AnnuncioService {
 	
 	public void rimuovi(Long idAnnuncioToRemove) throws Exception;
 	
+	public void acquista (String id, Utente utenteInstance) throws Exception;
+	
 	
 	// per injection
 	public void setAnnuncioDAO(AnnuncioDAO annuncioDAO);
