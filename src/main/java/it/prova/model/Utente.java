@@ -76,6 +76,15 @@ public class Utente {
 		this.creditoResiduo = creditoResiduo;
 	}
 
+	public Utente(String username, String password, String nome, String cognome, Integer creditoResiduo) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.nome = nome;
+		this.cognome = cognome;
+		this.creditoResiduo = creditoResiduo;
+	}
+
 	public Utente(Long id) {
 		super();
 		this.id = id;

@@ -61,6 +61,16 @@ public class UtilityForm {
 		return true;
 	}
 
+	public static boolean validateUtenteBean(Utente utenteToBeValidated) {
+		if (StringUtils.isBlank(utenteToBeValidated.getNome()) || StringUtils.isBlank(utenteToBeValidated.getCognome())
+				|| StringUtils.isBlank(utenteToBeValidated.getUsername())
+				|| StringUtils.isBlank(utenteToBeValidated.getPassword()) || utenteToBeValidated.getCreditoResiduo() < 0
+				|| utenteToBeValidated.getStato() == null || utenteToBeValidated.getDateCreated() == null) {
+			return false;
+		}
+		return true;
+	}
+
 	public static Date parseDateArrivoFromString(String dataAcquistoStringParam) {
 		if (StringUtils.isBlank(dataAcquistoStringParam))
 			return null;
