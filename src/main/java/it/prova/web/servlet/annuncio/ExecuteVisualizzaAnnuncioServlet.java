@@ -24,7 +24,7 @@ public class ExecuteVisualizzaAnnuncioServlet extends HttpServlet {
 
 		if (!NumberUtils.isCreatable(idAnnuncioParam)) {
 			request.setAttribute("errorMessage", "Attenzione si è verificato un errore.");
-			request.getRequestDispatcher("home").forward(request, response);
+			request.getRequestDispatcher("").forward(request, response);
 			return;
 		}
 
@@ -43,7 +43,7 @@ public class ExecuteVisualizzaAnnuncioServlet extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("errorMessage", "Attenzione si è verificato un errore.");
-			request.getRequestDispatcher("home").forward(request, response);
+			request.getRequestDispatcher("").forward(request, response);
 			return;
 		}
 

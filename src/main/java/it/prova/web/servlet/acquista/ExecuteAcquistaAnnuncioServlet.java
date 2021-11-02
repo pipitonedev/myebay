@@ -29,7 +29,7 @@ public class ExecuteAcquistaAnnuncioServlet extends HttpServlet {
 
 		if (!NumberUtils.isCreatable(idParam)) {
 			request.setAttribute("errorMessage", "Attenzione si è verificato un errore. (id)");
-			request.getRequestDispatcher("/index.jsp").forward(request, response);
+			request.getRequestDispatcher("").forward(request, response);
 			return;
 		}
 		try {
@@ -46,7 +46,7 @@ public class ExecuteAcquistaAnnuncioServlet extends HttpServlet {
 					MyServiceFactory.getAcquistoServiceInstance().findByExampleEager(example));
 		} catch (ElementNotFoundException e) {
 			request.setAttribute("errorMessage", "Attenzione si è verificato un errore.");
-			request.getRequestDispatcher("/index.jsp").forward(request, response);
+			request.getRequestDispatcher("").forward(request, response);
 			return;
 		} catch (CreditoInsufficiente e) {
 			request.setAttribute("errorMessage", "Attenzione, credito residuo insufficiente.");
@@ -55,7 +55,7 @@ public class ExecuteAcquistaAnnuncioServlet extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("errorMessage", "Attenzione si è verificato un errore.");
-			request.getRequestDispatcher("/index.jsp").forward(request, response);
+			request.getRequestDispatcher("").forward(request, response);
 			return;
 		}
 

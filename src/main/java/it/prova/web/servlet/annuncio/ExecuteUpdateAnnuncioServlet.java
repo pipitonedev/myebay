@@ -46,7 +46,7 @@ public class ExecuteUpdateAnnuncioServlet extends HttpServlet {
 			Annuncio annuncioInstance = MyServiceFactory.getAnnuncioServiceInstance().caricaSingoloElemento(Long.parseLong(idParam));
 			if (!annuncioInstance.isAperto()) {
 				request.setAttribute("errorMessage", "Attenzione l'annuncio non è più disponibile!");
-				request.getRequestDispatcher("/home").forward(request, response);
+				request.getRequestDispatcher("").forward(request, response);
 				return;
 			}
 			
@@ -63,7 +63,7 @@ public class ExecuteUpdateAnnuncioServlet extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("errorMessage", "Attenzione si è verificato un errore.");
-			request.getRequestDispatcher("/home").forward(request, response);
+			request.getRequestDispatcher("").forward(request, response);
 			return;
 		}
 		response.sendRedirect("ExecuteListAnnuncioUtenteServlet?operationResult=SUCCESS");

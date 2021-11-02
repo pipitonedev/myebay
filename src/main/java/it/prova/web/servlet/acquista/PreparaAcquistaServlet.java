@@ -27,7 +27,7 @@ public class PreparaAcquistaServlet extends HttpServlet {
 
 		if (!NumberUtils.isCreatable(idAnnuncioParam)) {
 			request.setAttribute("errorMessage", "Attenzione si è verificato un errore.");
-			request.getRequestDispatcher("index.jsp").forward(request, response);
+			request.getRequestDispatcher("").forward(request, response);
 			return;
 		}
 
@@ -37,7 +37,7 @@ public class PreparaAcquistaServlet extends HttpServlet {
 
 			if (annuncioInstance == null) {
 				request.setAttribute("errorMessage", "Elemento non trovato.");
-				request.getRequestDispatcher("index.jsp").forward(request, response);
+				request.getRequestDispatcher("").forward(request, response);
 				return;
 			}
 
@@ -45,7 +45,7 @@ public class PreparaAcquistaServlet extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("errorMessage", "Attenzione si è verificato un errore.");
-			request.getRequestDispatcher("index.jsp").forward(request, response);
+			request.getRequestDispatcher("").forward(request, response);
 			return;
 		}
 

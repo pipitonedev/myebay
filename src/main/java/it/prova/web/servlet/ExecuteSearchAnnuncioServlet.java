@@ -25,6 +25,7 @@ public class ExecuteSearchAnnuncioServlet extends HttpServlet {
 		String testoAnnuncioParam = request.getParameter("testoAnnuncio");
 		String prezzoParam = request.getParameter("prezzo");
 		String dataAnnuncioParam = request.getParameter("dataAnnuncio");
+		String[] categoriaInputParam = request.getParameterValues("categoria");
 
 		Annuncio example = new Annuncio( testoAnnuncioParam, Integer.parseInt(prezzoParam), 
 				UtilityForm.parseDateArrivoFromString(dataAnnuncioParam));

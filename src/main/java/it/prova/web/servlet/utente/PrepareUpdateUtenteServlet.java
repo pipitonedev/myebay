@@ -27,7 +27,7 @@ public class PrepareUpdateUtenteServlet extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("errorMessage", "Attenzione si è verificato un errore.");
-			request.getRequestDispatcher("index.jsp").forward(request, response);
+			request.getRequestDispatcher("").forward(request, response);
 			return;
 		}
 

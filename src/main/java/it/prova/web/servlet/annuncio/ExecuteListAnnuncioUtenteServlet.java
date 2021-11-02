@@ -34,7 +34,7 @@ public class ExecuteListAnnuncioUtenteServlet extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("errorMessage", "Attenzione si è verificato un errore.");
-			request.getRequestDispatcher("home").forward(request, response);
+			request.getRequestDispatcher("").forward(request, response);
 			return;
 		}
 

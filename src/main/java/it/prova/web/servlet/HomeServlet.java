@@ -9,27 +9,18 @@ import javax.servlet.http.HttpServletResponse;
 
 import it.prova.service.MyServiceFactory;
 
-@WebServlet("/HomeServlet")
+@WebServlet("")
 public class HomeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
 	public HomeServlet() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try {
-			request.setAttribute("categoria_list_attribute",
-					MyServiceFactory.getCategoriaServiceInstance().listAll());
+			request.setAttribute("categoria_list_attribute", MyServiceFactory.getCategoriaServiceInstance().listAll());
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -43,8 +34,7 @@ public class HomeServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try {
-			request.setAttribute("categoria_list_attribute",
-					MyServiceFactory.getCategoriaServiceInstance().listAll());
+			request.setAttribute("categoria_list_attribute", MyServiceFactory.getCategoriaServiceInstance().listAll());
 
 		} catch (Exception e) {
 			e.printStackTrace();

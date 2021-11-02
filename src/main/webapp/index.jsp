@@ -81,6 +81,17 @@
 	                        		<input class="form-control" id="dataPubblicazione" type="date" placeholder="dd/MM/yy" 
 	                        				title="formato : gg/mm/aaaa"  name="dataAnnuncio"  >
 								</div>
+								
+									<div class="col-md-6">
+								<label>Categoria/e</label><br>
+									<c:forEach items="${categoria_list_attribute }"
+									var="categoriaItem">
+									<label> <input type="checkbox" name="categoria" class="custom-form-box"
+										value="${categoriaItem.id}"> ${categoriaItem.descrizione}
+									</label>
+									<br>
+								</c:forEach>
+								</div>
 							
 								<div class="col-12">
 									<button type="submit" name="submit" value="submit" id="submit" class="btn btn-success">Conferma</button>
@@ -88,6 +99,8 @@
 								</div>
 								
 							</form>
+				      </div>
+				      </div>
 				      </div>
 			    </div>
 			    

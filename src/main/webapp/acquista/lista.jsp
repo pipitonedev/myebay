@@ -48,7 +48,7 @@
 				                    <tr>
 			                         	<th>Descrizione</th>
 				                        <th>Prezzo</th>
-				                        <th>Data Acquisto</th>
+				                        <th>Data Pubblicazione</th>
 				                        <th>Azioni</th>
 				                    </tr>
 				                </thead>

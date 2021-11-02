@@ -50,6 +50,7 @@
 			                         	<th>Testo Annuncio</th>
 				                        <th>Prezzo</th>
 				                        <th>Data Inserimento</th>
+				                        <th>Stato Annuncio</th>
 				                        <th>Azioni</th>
 				                    </tr>
 				                </thead>
@@ -59,6 +60,7 @@
 											<td>${annuncioItem.testoAnnuncio }</td>
 											<td>${annuncioItem.prezzo }</td>
 											<td><fmt:formatDate type = "date" value = "${annuncioItem.dataAnnuncio }" /></td>
+											<td>${annuncioItem.aperto }</td>
 											<td>
 												<a class="btn  btn-sm btn-outline-secondary ml-2 mr-2" href="${pageContext.request.contextPath}/user/ExecuteVisualizzaAnnuncioServlet?idAnnuncio=${annuncioItem.id }">Visualizza</a>
 												<a class="btn  btn-sm btn-outline-primary ml-2 mr-2" href="${pageContext.request.contextPath}/user/PrepareUpdateAnnuncioServlet?idAnnuncio=${annuncioItem.id }">Edit</a>

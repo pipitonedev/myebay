@@ -28,7 +28,7 @@ public class ExecuteDeleteAnnuncioServlet extends HttpServlet {
 
 		if (!NumberUtils.isCreatable(idAnnuncioParam)) {
 			request.setAttribute("errorMessage", "Attenzione si è verificato un errore. (id)");
-			request.getRequestDispatcher("/home").forward(request, response);
+			request.getRequestDispatcher("").forward(request, response);
 			return;
 		}
 
@@ -37,7 +37,7 @@ public class ExecuteDeleteAnnuncioServlet extends HttpServlet {
 					.caricaSingoloElemento(Long.parseLong(idAnnuncioParam));
 			if (!annuncioInstance.isAperto()) {
 				request.setAttribute("errorMessage", "Attenzione l'annuncio non è più disponibile!");
-				request.getRequestDispatcher("/home").forward(request, response);
+				request.getRequestDispatcher("").forward(request, response);
 				return;
 			}
 
@@ -48,7 +48,7 @@ public class ExecuteDeleteAnnuncioServlet extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("errorMessage", "Attenzione si è verificato un errore.");
-			request.getRequestDispatcher("home").forward(request, response);
+			request.getRequestDispatcher("").forward(request, response);
 			return;
 		}
 

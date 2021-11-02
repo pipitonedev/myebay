@@ -3,7 +3,7 @@
 	<nav class="navbar navbar-expand-lg navbar-dark bg-danger"
 		aria-label="Eighth navbar example">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="${pageContext.request.contextPath}/index.jsp"> <b><i>My Ebay</i></b>
+			<a class="navbar-brand" href="${pageContext.request.contextPath}"> <b><i>My Ebay</i></b>
 			</a>
 			<button class="navbar-toggler" type="button"
 				data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
@@ -18,7 +18,7 @@
 						 <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="dropdown07" data-bs-toggle="dropdown" aria-expanded="false">Menu'</a>
             <ul class="dropdown-menu" aria-labelledby="dropdown07">
-              <li><a class="dropdown-item" href="${pageContext.request.contextPath}/index.jsp">Home</a></li>
+              <li><a class="dropdown-item" href="${pageContext.request.contextPath}">Home</a></li>
               <li><a class="dropdown-item" href="${pageContext.request.contextPath}/PrepareSearchAnnuncioServlet">Ricerca Annunci</a></li>
         		
         		<c:if test="${userInfo.isAdmin()}">

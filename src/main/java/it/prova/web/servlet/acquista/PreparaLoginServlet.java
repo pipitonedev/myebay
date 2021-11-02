@@ -24,7 +24,7 @@ public class PreparaLoginServlet extends HttpServlet {
 
 		if (!NumberUtils.isCreatable(idAnnuncioInput)) {
 			request.setAttribute("errorMessage", "Attenzione si è verificato un errore.");
-			request.getRequestDispatcher("index.jsp").forward(request, response);
+			request.getRequestDispatcher("").forward(request, response);
 			return;
 		}
 
@@ -33,7 +33,7 @@ public class PreparaLoginServlet extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("errorMessage", "Attenzione si è verificato un errore.");
-			request.getRequestDispatcher("index.jsp").forward(request, response);
+			request.getRequestDispatcher("").forward(request, response);
 			return;
 		}
 

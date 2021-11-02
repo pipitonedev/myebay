@@ -99,7 +99,7 @@ public class AnnuncioDAOImpl implements AnnuncioDAO{
 	}
 
 	@Override
-	public List<Annuncio> findByExample(Annuncio example) throws Exception {
+	public List<Annuncio> findByExample(Annuncio example, String[] categorie) throws Exception {
 		Map<String, Object> paramaterMap = new HashMap<String, Object>();
 		List<String> whereClauses = new ArrayList<String>();
 
