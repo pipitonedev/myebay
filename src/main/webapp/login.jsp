@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!doctype html>
 <html lang="it">
 
@@ -19,14 +20,16 @@
 	    
 		<main class="form-signin">
 		  <form action="LoginServlet" method="post" novalidate="novalidate">
+		  <input type="hidden" name="idAnnuncio" value="${id_annuncio_attr}">
 		  
 	  		<div class="alert alert-danger alert-dismissible fade show ${errorMessage==null?'d-none': ''}" role="alert">
 		 		 ${errorMessage}
 			</div>
 		  
 		    <img class="mb-4" src="./assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
-		    <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
-		
+		    <h1 class="h3 mb-3 fw-normal">Accedi</h1>
+			
+			
 		    <div class="form-floating">
 		      <input type="text" name="inputUsername" class="form-control" id="inputUsername" placeholder="username">
 		      <label for="inputUsername">Email address</label>
@@ -38,7 +41,7 @@
 		
 		    <div class="checkbox mb-3">
 		      <label>
-		        <input type="checkbox" value="remember-me"> Remember me
+		        <input type="checkbox" value="remember-me"> Ricordami
 		      </label>
 		    </div>
 		    <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>

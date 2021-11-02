@@ -1,5 +1,4 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!doctype html>
 <html lang="it" class="h-100" >
 	 <head>
@@ -49,39 +48,46 @@
 				  ${errorMessage}
 				  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" ></button>
 				</div>
+				
+				<div class="alert alert-danger alert-dismissible fade show ${successMessage==null?'d-none':'' }" role="alert">
+				  ${successMessage}
+				  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" ></button>
+				</div>
 			    
 			     <div class="p-5 mb-4 bg-light rounded-3">
 				      <div class="container-fluid py-5">
-				        <h1 class="display-5 fw-bold">
-						My Ebay</h1>
-				        <p class="col-md-8 fs-4">Usa il form qui sotto per cercare tra i vari
-				        annunci presenti sul nostro portale.</p>
-				        
-				         <form method="post" action="ExecuteSearchAnnuncioServlet" class="row g-3" >
-							
-							
-								<div class="col-md-6">
-									<input type="text" name="testoAnnuncio" id="testoAnnuncio" class="form-control" placeholder="Cerca annuncio....">
-								</div>
-								
-								
-								<div class="col-md-6">
-									<input type="number" class="form-control" name="prezzo" id="prezzo" placeholder="Inserire il prezzo da cui partire.." value="0">
-								</div>
-								
-							
-								<div class="col-md-6">
-								<c:forEach items="${categorie_list_attribute}" var="categoriaItem">
-										<input type="checkbox" name="categoria" value="${categoriaItem.id}">${categoriaItem.descrizione}<br>
-									</c:forEach>
-								</div>
-								
-								
-							<div class="col-12">
-								<button type="submit" name="submit" value="submit" id="submit" class="btn btn-success">Conferma</button>
-							</div>
+				        <h1 class="display-5 fw-bold">Benvenuto in MyEbay</h1><br>
+				        <div class='card'>
+				    <div class='card-header'>
+				        <h5>Ricerca annuncio</h5> 
+				    </div>
+				    <div class='card-body'>
 		
-						</form>
+							<form method="post" action="ExecuteSearchAnnuncioServlet" class="row g-3" >
+							
+							
+								<div class="col-md-6">
+									<label>Testo annuncio</label>
+									<input type="text" name="testoAnnuncio" id="testoAnnuncio" class="form-control" placeholder="Inserire il testo" >
+								</div>
+								
+								<div class="col-md-6">
+									<label>Prezzo</label>
+									<input type="number" name="prezzo" id="prezzo" class="form-control" placeholder="Inserire il prezzo" value = "0" >
+								</div>
+								
+								<div class="col-md-6">
+									<label>Data di Pubblicazione</label>
+	                        		<input class="form-control" id="dataPubblicazione" type="date" placeholder="dd/MM/yy" 
+	                        				title="formato : gg/mm/aaaa"  name="dataAnnuncio"  >
+								</div>
+							
+								<div class="col-12">
+									<button type="submit" name="submit" value="submit" id="submit" class="btn btn-success">Conferma</button>
+									<input class="btn btn-outline-warning" type="reset" value="Reset Campi">
+								</div>
+								
+							</form>
 				      </div>
 			    </div>
 			    
@@ -95,7 +101,7 @@
 			        </div>
 			        <h2>Gestione Annunci</h2>
 			        <p>Inserisci, Aggiorna o elimina i tuoi annunci</p>
-			        <a href="${pageContext.request.contextPath}/user/PrepareSearchAnnuncioUtenteServlet" class="icon-link">
+			        <a href="${pageContext.request.contextPath}/user/PrepareCercaAnnunciUtente" class="icon-link">
 			          Vai alla funzionalità
 			          <svg class="bi" width="1em" height="1em"><use xlink:href="#chevron-right"/></svg>
 			        </a>

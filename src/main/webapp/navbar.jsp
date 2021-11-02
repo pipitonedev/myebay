@@ -3,7 +3,7 @@
 	<nav class="navbar navbar-expand-lg navbar-dark bg-danger"
 		aria-label="Eighth navbar example">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="index.jsp"> <b><i>My Ebay</i></b>
+			<a class="navbar-brand" href="${pageContext.request.contextPath}/index.jsp"> <b><i>My Ebay</i></b>
 			</a>
 			<button class="navbar-toggler" type="button"
 				data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
@@ -24,6 +24,7 @@
         		<c:if test="${userInfo.isAdmin()}">
               	<li><a class="dropdown-item" href="${pageContext.request.contextPath}/admin/PrepareSearchUtenteServlet">Ricerca Utenti</a></li>
               	<li><a class="dropdown-item" href="${pageContext.request.contextPath}/admin/ExecuteListUtenteServlet">Gestione Utenti</a></li>
+              	<li><a class="dropdown-item" href="${pageContext.request.contextPath}/user/PrepareSearchAcquistoServlet">I miei acquisti</a></li>
               </c:if>
               
               

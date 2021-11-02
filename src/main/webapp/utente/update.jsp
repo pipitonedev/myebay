@@ -73,11 +73,11 @@
 								
 								<div class="col-md-6">
 									<label for="statoUt">Stato Utente</label>
-									<select class="form-control" id="statoUt" name="stato">
+									<select class="form-select" id="statoUt" name="stato">
 										<option value="" selected> -- Selezionare una voce -- </option>
-										<option value="ATTIVO"  >ATTIVO</option>
-										<option value="CREATO"  >CREATO</option>
-										<option value="DISABILITATO"  >DISABILITATO</option>
+										<option value="ATTIVO" ${update_utente_attr.stato == 'ATTIVO'?'selected':''} >ATTIVO</option>
+										<option value="CREATO" ${update_utente_attr.stato == 'CREATO'?'selected':''} >CREATO</option>
+										<option value="DISABILITATO" ${update_utente_attr.stato == 'DISABILITATO'?'selected':''} >DISABILITATO</option>
 									</select>
 								 </div>     
 								

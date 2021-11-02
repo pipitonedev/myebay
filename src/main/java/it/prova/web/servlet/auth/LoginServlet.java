@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.math.NumberUtils;
 
 import it.prova.model.Utente;
 import it.prova.service.MyServiceFactory;
@@ -24,6 +25,7 @@ public class LoginServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		String annuncioId = request.getParameter("idAnnuncio");
 		String loginInput = request.getParameter("inputUsername");
 		String passwordInput = request.getParameter("inputPassword");
 
@@ -38,6 +40,7 @@ public class LoginServlet extends HttpServlet {
 		try {
 			Utente utenteInstance = MyServiceFactory.getUtenteServiceInstance().accedi(loginInput, passwordInput);
 			if (utenteInstance == null) {
+				
 				request.setAttribute("errorMessage", "Utente non trovato.");
 				destinazione = "login.jsp";
 			} else {
@@ -49,8 +52,11 @@ public class LoginServlet extends HttpServlet {
 			destinazione = "login.jsp";
 			request.setAttribute("errorMessage", "Attenzione! Si è verificato un errore.");
 		}
-
-		request.getRequestDispatcher(destinazione).forward(request, response);
+		if (!NumberUtils.isCreatable(annuncioId)) {
+			response.sendRedirect(destinazione);
+			return;
+		}
+		response.sendRedirect("PreparaAcquistaServlet?idAnnuncio="+annuncioId);
 
 	}
 

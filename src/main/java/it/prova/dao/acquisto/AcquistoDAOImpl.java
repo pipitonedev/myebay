@@ -67,7 +67,7 @@ private EntityManager entityManager;
 			whereClauses.add(" a.descrizione  like :descrizione ");
 			paramaterMap.put("descrizione", "%" + example.getDescrizione() + "%");
 		}
-		if (example.getPrezzo() < 0) {
+		if (example.getPrezzo() != null) {
 			whereClauses.add("a.prezzo >= :prezzo ");
 			paramaterMap.put("prezzo", example.getPrezzo());
 		}

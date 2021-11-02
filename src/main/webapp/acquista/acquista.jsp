@@ -21,7 +21,7 @@
 			  <div class="container">
 			  
 			  
-			  		<div class="alert alert-danger alert-dismissible fade show  ${errorMessage==null?'d-none':'' }" role="alert">
+			  		<div class="alert alert-danger alert-dismissible fade show  ${successMessage==null?'d-none':'' }" role="alert">
 				 ${errorMessage}
 				  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" ></button>
 				</div>
@@ -62,7 +62,7 @@
 					    	
 					    </div>
 					    <!-- end card body -->
-					    
+					    <c:if test="${userInfo.isLogged()}">
 					    <div class='card-footer'>
 					    	<form action="${pageContext.request.contextPath}/user/ExecuteAcquistaAnnuncioServlet" method="post">
 					    		<input type="hidden" name="idAnnuncio" value="${show_annuncio_attr.id}">
@@ -73,6 +73,20 @@
 						        </a>
 					        </form>
 					    </div>
+					    </c:if>
+					    
+					     <c:if test="${!userInfo.isLogged()}">
+					    <div class='card-footer'>
+					    	<form action="${pageContext.request.contextPath}/PreparaLoginServlet" method="post">
+					    		<input type="hidden" name="idAnnuncio" value="${show_annuncio_attr.id}">
+					    		<input type="hidden" name="from" value="${pageContext.request.requestURI}">
+						    	<button type="submit" name="submit" id="submit" class="btn btn-primary">Acquista</button>
+						        <a href="list.jsp" class='btn btn-outline-secondary' style='width:80px'>
+						            <i class='fa fa-chevron-left'></i> Back
+						        </a>
+					        </form>
+					    </div>
+					    </c:if>
 					<!-- end card -->
 					</div>	
 			  
