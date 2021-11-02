@@ -54,6 +54,7 @@
 				                </thead>
 				                <tbody>
 				                	<c:forEach items="${annuncio_list_attribute }" var="annuncioItem">
+				                	<c:if test="${annuncioItem.aperto == true &&  annuncioItem.utenteInserimento.id != userInfo.id}">
 										<tr>
 											<td>${annuncioItem.testoAnnuncio }</td>
 											<td>${annuncioItem.prezzo }</td>
@@ -62,6 +63,7 @@
 												<a class="btn  btn-sm btn-outline-primary ml-2 mr-2" href="PreparaAcquistaServlet?idAnnuncio=${annuncioItem.id }">Acquista</a>
 											</td>
 										</tr>
+										</c:if>
 									</c:forEach>
 				                </tbody>
 				            </table>

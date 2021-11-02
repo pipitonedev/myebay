@@ -54,6 +54,7 @@
 				                </thead>
 				                <tbody>
 				                	<c:forEach items="${acquisto_list_attribute }" var="acquistoItem">
+				                	<c:if test="${ acquistoItem.utenteAcquirente.id != userInfo.id}">
 										<tr>
 											<td>${acquistoItem.descrizione }</td>
 											<td>${acquistoItem.prezzo }</td>
@@ -62,6 +63,7 @@
 												<a class="btn  btn-sm btn-outline-secondary ml-2 mr-2" href="${pageContext.request.contextPath}/user/ExecuteVisualizzaAcquistoServlet?idAcquisto=${acquistoItem.id }">Visualizza</a>
 											</td>
 										</tr>
+										</c:if>
 									</c:forEach>
 				                </tbody>
 				            </table>

@@ -14,9 +14,9 @@ import org.apache.commons.lang3.StringUtils;
 import it.prova.model.Annuncio;
 import it.prova.model.Utente;
 
-public class AnnuncioDAOImpl implements AnnuncioDAO{
+public class AnnuncioDAOImpl implements AnnuncioDAO {
 	private EntityManager entityManager;
-	
+
 	@Override
 	public List<Annuncio> list() throws Exception {
 		return entityManager.createQuery("from Annuncio", Annuncio.class).getResultList();
@@ -61,15 +61,16 @@ public class AnnuncioDAOImpl implements AnnuncioDAO{
 	public List<Annuncio> findByExampleEager(Annuncio example, String[] categorie) throws Exception {
 		Map<String, Object> paramaterMap = new HashMap<String, Object>();
 		List<String> whereClauses = new ArrayList<String>();
-		 String categoria = "";
+		String categoria = "";
 
-		StringBuilder queryBuilder = new StringBuilder("select a from Annuncio a join a.utenteInserimento u join a.categorie c where a.id = a.id ");
+		StringBuilder queryBuilder = new StringBuilder(
+				"select distinct a from Annuncio a join fetch a.utenteInserimento u join a.categorie c where a.id = a.id ");
 
 		if (StringUtils.isNotEmpty(example.getTestoAnnuncio())) {
 			whereClauses.add(" a.testoAnnuncio  like :testoAnnuncio ");
 			paramaterMap.put("testoAnnuncio", "%" + example.getTestoAnnuncio() + "%");
 		}
-		if (example.getPrezzo() < 0) {
+		if (example.getPrezzo() > 0) {
 			whereClauses.add("a.prezzo >= :prezzo ");
 			paramaterMap.put("prezzo", example.getPrezzo());
 		}
@@ -81,19 +82,19 @@ public class AnnuncioDAOImpl implements AnnuncioDAO{
 			whereClauses.add("a.aperto like :aperto ");
 			paramaterMap.put("aperto", true);
 		}
-		
-		if(categorie != null && categorie.length>0) {
-			for(int i = 0; i<categorie.length; i++) {
-				if(i==0)
+
+		if (categorie != null && categorie.length > 0) {
+			for (int i = 0; i < categorie.length; i++) {
+				if (i == 0)
 					categoria += " c.id=" + categorie[i];
 				else
-					categoria += " or c.id=" + categorie[i]; 
-			} 
+					categoria += " or c.id=" + categorie[i];
+			}
 		}
 
 		queryBuilder.append(!whereClauses.isEmpty() ? " and " : "");
 		queryBuilder.append(StringUtils.join(whereClauses, " and "));
-		if(categorie != null)
+		if (categorie != null)
 			queryBuilder.append(" and " + categoria);
 		TypedQuery<Annuncio> typedQuery = entityManager.createQuery(queryBuilder.toString(), Annuncio.class);
 
@@ -106,7 +107,8 @@ public class AnnuncioDAOImpl implements AnnuncioDAO{
 
 	@Override
 	public List<Annuncio> findByUtente(Utente example) throws Exception {
-		TypedQuery<Annuncio> query = entityManager.createQuery("select a from Annuncio a join a.utenteInserimento u where u.id = ?1",Annuncio.class);
+		TypedQuery<Annuncio> query = entityManager
+				.createQuery("select a from Annuncio a join a.utenteInserimento u where u.id = ?1", Annuncio.class);
 		return query.setParameter(1, example.getId()).getResultList();
 	}
 
@@ -129,7 +131,7 @@ public class AnnuncioDAOImpl implements AnnuncioDAO{
 			whereClauses.add("a.data >= :data ");
 			paramaterMap.put("data", example.getDataAnnuncio());
 		}
-		
+
 		whereClauses.add("a.aperto = true ");
 		queryBuilder.append(!whereClauses.isEmpty() ? " and " : "");
 		queryBuilder.append(StringUtils.join(whereClauses, " and "));
@@ -144,7 +146,44 @@ public class AnnuncioDAOImpl implements AnnuncioDAO{
 
 	@Override
 	public Optional<Annuncio> findOneEager(Long id) throws Exception {
-		return entityManager.createQuery("from Annuncio a left join fetch a.categorie c where a.id=:idAnnuncio", Annuncio.class)
+		return entityManager
+				.createQuery("from Annuncio a left join fetch a.categorie c where a.id=:idAnnuncio", Annuncio.class)
 				.setParameter("idAnnuncio", id).getResultList().stream().findFirst();
+	}
+
+	@Override
+	public List<Annuncio> findByExampleEager(Annuncio example) throws Exception {
+		Map<String, Object> paramaterMap = new HashMap<String, Object>();
+		List<String> whereClauses = new ArrayList<String>();
+
+		StringBuilder queryBuilder = new StringBuilder(
+				"select a from Annuncio a join fetch a.utenteInserimento u where a.id = a.id ");
+
+		if (StringUtils.isNotEmpty(example.getTestoAnnuncio())) {
+			whereClauses.add(" a.testoAnnuncio  like :testoAnnuncio ");
+			paramaterMap.put("testoAnnuncio", "%" + example.getTestoAnnuncio() + "%");
+		}
+		if (example.getPrezzo() > 0) {
+			whereClauses.add("a.prezzo >= :prezzo ");
+			paramaterMap.put("prezzo", example.getPrezzo());
+		}
+		if (example.getDataAnnuncio() != null) {
+			whereClauses.add("a.data >= :data ");
+			paramaterMap.put("data", example.getDataAnnuncio());
+		}
+		if (example.isAperto()) {
+			whereClauses.add("a.aperto like :aperto ");
+			paramaterMap.put("aperto", true);
+		}
+
+		queryBuilder.append(!whereClauses.isEmpty() ? " and " : "");
+		queryBuilder.append(StringUtils.join(whereClauses, " and "));
+		TypedQuery<Annuncio> typedQuery = entityManager.createQuery(queryBuilder.toString(), Annuncio.class);
+
+		for (String key : paramaterMap.keySet()) {
+			typedQuery.setParameter(key, paramaterMap.get(key));
+		}
+
+		return typedQuery.getResultList();
 	}
 }

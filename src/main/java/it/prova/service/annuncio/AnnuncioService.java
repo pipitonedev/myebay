@@ -28,6 +28,8 @@ public interface AnnuncioService {
 	
 	public List<Annuncio> findByExampleEager(Annuncio example, String[] categorie) throws Exception;
 	
+	public List<Annuncio> findByExampleEager(Annuncio example) throws Exception;
+	
 	public List<Annuncio> findByUtente(Utente example) throws Exception;
 	
 	public void rimuovi(Long idAnnuncioToRemove) throws Exception;
