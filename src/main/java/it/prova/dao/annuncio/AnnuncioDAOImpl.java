@@ -58,11 +58,12 @@ public class AnnuncioDAOImpl implements AnnuncioDAO{
 	}
 
 	@Override
-	public List<Annuncio> findByExampleEager(Annuncio example) throws Exception {
+	public List<Annuncio> findByExampleEager(Annuncio example, String[] categorie) throws Exception {
 		Map<String, Object> paramaterMap = new HashMap<String, Object>();
 		List<String> whereClauses = new ArrayList<String>();
+		 String categoria = "";
 
-		StringBuilder queryBuilder = new StringBuilder("select a from Annuncio a join a.utenteInserimento u where a.id = a.id ");
+		StringBuilder queryBuilder = new StringBuilder("select a from Annuncio a join a.utenteInserimento u join a.categorie c where a.id = a.id ");
 
 		if (StringUtils.isNotEmpty(example.getTestoAnnuncio())) {
 			whereClauses.add(" a.testoAnnuncio  like :testoAnnuncio ");
@@ -76,13 +77,24 @@ public class AnnuncioDAOImpl implements AnnuncioDAO{
 			whereClauses.add("a.data >= :data ");
 			paramaterMap.put("data", example.getDataAnnuncio());
 		}
-		if (example.getUtenteInserimento().getId() != null) {
-			whereClauses.add("u.id = :idUtente ");
-			paramaterMap.put("idUtente", example.getUtenteInserimento().getId());
+		if (example.isAperto()) {
+			whereClauses.add("a.aperto like :aperto ");
+			paramaterMap.put("aperto", true);
+		}
+		
+		if(categorie != null && categorie.length>0) {
+			for(int i = 0; i<categorie.length; i++) {
+				if(i==0)
+					categoria += " c.id=" + categorie[i];
+				else
+					categoria += " or c.id=" + categorie[i]; 
+			} 
 		}
 
 		queryBuilder.append(!whereClauses.isEmpty() ? " and " : "");
 		queryBuilder.append(StringUtils.join(whereClauses, " and "));
+		if(categorie != null)
+			queryBuilder.append(" and " + categoria);
 		TypedQuery<Annuncio> typedQuery = entityManager.createQuery(queryBuilder.toString(), Annuncio.class);
 
 		for (String key : paramaterMap.keySet()) {
@@ -99,7 +111,7 @@ public class AnnuncioDAOImpl implements AnnuncioDAO{
 	}
 
 	@Override
-	public List<Annuncio> findByExample(Annuncio example, String[] categorie) throws Exception {
+	public List<Annuncio> findByExample(Annuncio example) throws Exception {
 		Map<String, Object> paramaterMap = new HashMap<String, Object>();
 		List<String> whereClauses = new ArrayList<String>();
 

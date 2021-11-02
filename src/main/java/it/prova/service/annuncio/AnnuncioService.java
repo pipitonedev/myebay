@@ -26,7 +26,7 @@ public interface AnnuncioService {
 	
 	public List<Annuncio> findByExample(Annuncio example) throws Exception;
 	
-	public List<Annuncio> findByExampleEager(Annuncio example) throws Exception;
+	public List<Annuncio> findByExampleEager(Annuncio example, String[] categorie) throws Exception;
 	
 	public List<Annuncio> findByUtente(Utente example) throws Exception;
 	

@@ -166,7 +166,7 @@ public class AnnuncioServiceImpl implements AnnuncioService {
 	}
 
 	@Override
-	public List<Annuncio> findByExampleEager(Annuncio example) throws Exception {
+	public List<Annuncio> findByExampleEager(Annuncio example, String[] categorie) throws Exception {
 		EntityManager entityManager = LocalEntityManagerFactoryListener.getEntityManager();
 
 		try {
@@ -174,7 +174,7 @@ public class AnnuncioServiceImpl implements AnnuncioService {
 			annuncioDAO.setEntityManager(entityManager);
 
 			// eseguo quello che realmente devo fare
-			return annuncioDAO.findByExampleEager(example);
+			return annuncioDAO.findByExampleEager(example, categorie);
 
 		} catch (Exception e) {
 			e.printStackTrace();
